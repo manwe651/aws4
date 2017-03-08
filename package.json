@@ -67,5 +67,10 @@
   },
   "scripts": {
     "test": "mocha ./test/fast.js ./test/slow.js -b -t 100s -R list"
+  },
+  "dependencies": {
+    "create-hash": "^1.1.2",
+    "create-hmac": "^1.1.4",
+    "querystring-browser": "^1.0.4"
   }
 }

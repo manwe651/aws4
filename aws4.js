@@ -1,18 +1,19 @@
 var aws4 = exports,
     url = require('url'),
-    querystring = require('querystring'),
-    crypto = require('crypto'),
+    querystring = require('querystring-browser'),
+    createHash = require('create-hash'),
+    createHmac = require('create-hmac'),
     lru = require('./lru'),
     credentialsCache = lru(1000)
 
 // http://docs.amazonwebservices.com/general/latest/gr/signature-version-4.html
 
 function hmac(key, string, encoding) {
-  return crypto.createHmac('sha256', key).update(string, 'utf8').digest(encoding)
+  return createHmac('sha256', key).update(string, 'utf8').digest(encoding)
 }
 
 function hash(string, encoding) {
-  return crypto.createHash('sha256').update(string, 'utf8').digest(encoding)
+  return createHash('sha256').update(string, 'utf8').digest(encoding)
 }
 
 // This function assumes the string has already been percent encoded
